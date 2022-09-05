@@ -51,7 +51,7 @@ def canConstruct_Tabulation(target : str, wordBank : list[str]):
     for index in range(len(target)+1):
         if table[index] == True:
             for word in wordBank:
-                if target.startswith(word,index,index+len(word)): # Check if the target string starting from index actually starts and ends with word.
+                if target.startswith(word,index,index+len(word) == True): # Check if the target string starting from index actually starts and ends with word.
                     index_forward = index + len(word)
                     if index_forward <= len(target):
                         table[index_forward] = True # if we can find a substring that starts and ends with the word, then set index+len(word) to be true.
