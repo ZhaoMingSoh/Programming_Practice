@@ -38,6 +38,21 @@ def combinationSum4_Memo(nums: list[int], target: int) -> int:
     
     return combSum4_Helper_Memo(nums,target)
 
+# DP - Tabulation
+def combinationSum4_Tab(nums: list[int], target: int) -> int:
+    # Create a table of size target + 1
+    table = [0] * (target+1)
+    # Seed Value
+    table[0] = 1
+
+    for i in range(1,target+1):
+        for num in nums:
+            if i-num < 0:
+                continue
+            table[i] += table[i-num]
+
+    return table[target]
+
 if __name__ == "__main__":
     nums = [1,2,3]
     target = 4
@@ -48,3 +63,13 @@ if __name__ == "__main__":
     print("\nMemoisation")
     print(f"The total number of possible combinations for {target} from {nums} is {combinationSum4_Memo(nums,target)}")
     print(f"The total number of possible combinations for {3} from {[9]} is {combinationSum4_Memo([9],3)}")
+
+    print("\Tabulation")
+    # nums = [1,2,3] target = 4 --> table of size 5 [1,0,0,0,0] --> start from position 1 and find the subproblem.
+    #         0 1 2                                  0 1 2 3 4
+    # DP[1] = DP[1-num[0]] + DP[1-num[1]] + DP[1-num[2]] : DP[1] = 1 + None(Out of bound) + None(Out of bound) = 1
+    # DP[2] = DP[2-num[0]] + DP[2-num[1]] + DP[2-num[2]] : DP[2] = 1 + 1 + None = 2
+    # DP[3] = DP[3-num[0]] + DP[3-num[1]] + DP[3-num[2]] : DP[3] = 2 + 1 + 1 = 4
+    # DP[4] = DP[4-num[0]] + DP[4-num[1]] + DP[4-num[2]] : DP[4] = 4 + 2 + 1 = 7
+    print(f"The total number of possible combinations for {target} from {nums} is {combinationSum4_Tab(nums,target)}")
+    print(f"The total number of possible combinations for {3} from {[9]} is {combinationSum4_Tab([9],3)}")
