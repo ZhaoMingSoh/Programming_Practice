@@ -42,7 +42,13 @@ def rob_Tabulation(nums: list[int]) -> int:
     # Create a table of size nums + 1
     table = [0] * (len(nums)+1)
 
-    # Idea : for f(i), you can call nums[i-1]+f(i-2) or f(i-1) and find the max of the two.
+    # Idea : Gradually build up the solution to each of the table indexes from the previous indexes.
+    #       - Always start at table[1] because table[0] represents robbing no houses.
+    #       - take = nums[i-1] + table[i-2], not take = table[i-1]
+    #       - Ex: houses = [1 2 3 1] - table = [0 0 0 0 0]
+    #                       0 1 2 3             0 1 2 3 4
+    #             1)(subproblems for i=1 is either go 2 steps before or 1 step before) table[1] = max(nums[0]+table[-1], table[0]) -> 1   table = [0 1 0 0 0]
+    #                                                                                                                                              0 1 2 3 4
     for i in range(1,len(nums)+1): # Starts from index=1 because index=0 refers to not robbing anything.
         taken = nums[i-1]
         if i-2 >= 0: # The first i=1 will lead to f(1-2=-1) which does not exist.
