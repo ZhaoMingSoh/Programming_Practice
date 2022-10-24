@@ -1,5 +1,6 @@
 # Edge list of a graph
 from pickle import FALSE
+from re import I
 
 
 edges = [
@@ -27,13 +28,34 @@ def convertEdge_AdjacencyList(edges):
 
     return graph
 
-# 2) Depth first search
+# 2) Depth first search - 
+# How to prevent cyclic search ?
+#   - mark each traversed node as visited.
 def hasPath_DFS(graph, src, des):
-    
-    return
+    visited = set()
+    stack = list(src)
+
+    while len(stack) != 0:
+        print(stack)
+        curr_node = stack.pop()
+
+        if curr_node == des :
+            return True
+
+        # Most important algo is this : where only during the addition of the neighbouring nodes do we check if the node is already visited.
+        for neigh in graph[curr_node]:
+            if neigh in visited:
+                continue
+            stack.append(neigh)
+        
+        visited.add(curr_node)
+
+    return False
 
 if __name__ == "__main__":
     graph_1 = convertEdge_AdjacencyList(edges)
-    print(graph_1)
+    src = "o"
+    des = "n"
+    print(f" Does the undirected graph have a path from {src} to {des} ? {hasPath_DFS(graph_1, src, des)}")
 
 

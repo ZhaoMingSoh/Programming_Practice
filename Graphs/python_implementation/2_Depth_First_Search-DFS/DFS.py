@@ -1,4 +1,5 @@
 # Present the graph in an adjacency list format
+# Directed Graph
 graph = {
     'a' : ['b','c'],
     'b' : ['d'],
@@ -23,7 +24,7 @@ def depth_first_search(graph : dict):
 
     # Uses the stack (LIFO) to traverse the graph
     stack = [key_list[0]]
-
+    
     while len(stack) != 0:
         curr_node = stack.pop()
         print(curr_node)

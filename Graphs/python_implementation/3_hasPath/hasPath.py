@@ -37,6 +37,12 @@ def bfs_hasPath(graph, src, des):
 
     return False
 
+
+# Time complexity : 
+#    n = # nodes
+#    e = # edges - n^2
+#    Time = O(e) or O(n^2)- in the worst case you may need to traverse every single edges.
+#    Space  = O(n) - in the worst case you may have every node on the stack or queue.
 if __name__ == "__main__":
     src = 'f'
     des = 'k'
