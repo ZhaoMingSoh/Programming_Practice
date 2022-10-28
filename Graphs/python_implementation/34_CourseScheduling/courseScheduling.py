@@ -23,7 +23,7 @@ def canFinish(numCourses: int, prerequisites: list[list[int]]) -> bool:
         return adjacencyList
     
     visited = set()
-    def DFS(node):
+    def DFS_Recur(node):
         if node in visited: # If a node is already in the visited set, this tells me a loop has been found, therefore it is impossible to finish all courses
             return False
 
@@ -35,7 +35,7 @@ def canFinish(numCourses: int, prerequisites: list[list[int]]) -> bool:
     
         # Explore the new node's neighbors
         for neigh in adjacencyList[node]:
-            if not DFS(neigh): # Once a loop is detected, we keep returning false until the end
+            if not DFS_Recur(neigh): # Once a loop is detected, we keep returning false until the end
                 return False
         visited.remove(node) # there could be multiple individual components that have the same courses but different prerequisites
         adjacencyList[node] = [] # We remove the already explored node to prevent repeats exploration of the same node which can be time consuming
@@ -46,13 +46,13 @@ def canFinish(numCourses: int, prerequisites: list[list[int]]) -> bool:
     
     # There could be multiple individual graph components, therefore we need to loop through all the courses
     for crs in range(numCourses):
-        if not DFS(crs):
+        if not DFS_Recur(crs):
             return False
     
     # Second Way to do it via numbering system where 0 : unvisited, 1 : visited, 2 : processing
     # visited2 = [0] * numCourses
 
-    # def DFS2(node):
+    # def DFS2_Recur(node):
     #     if visited2[node] == 1:
     #         return True
         
@@ -62,7 +62,7 @@ def canFinish(numCourses: int, prerequisites: list[list[int]]) -> bool:
     #     visited2[node] = 2
 
     #     for neigh in adjacencyList[node]:
-    #         if not DFS2(neigh):
+    #         if not DFS2_Recur(neigh):
     #             return False
         
     #     visited2[node] = 1
@@ -70,7 +70,7 @@ def canFinish(numCourses: int, prerequisites: list[list[int]]) -> bool:
     #     return True
 
     # for crs in range(numCourses):
-    #     if not DFS2(crs):
+    #     if not DFS2_Recur(crs):
     #         return False
 
     return True
