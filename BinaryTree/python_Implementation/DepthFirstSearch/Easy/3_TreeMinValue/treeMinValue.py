@@ -18,7 +18,7 @@ def DFS(node):
     leftVal = DFS(node.left)
     rigthVal = DFS(node.right)
 
-    # Keep the smallest value out of all the left , right and root before returing to the next subtree
+    # Find the smallest value in the left and righ subtree before comparing it to the root node of that subtree
     if leftVal < smallest_Value:
         smallest_Value = leftVal
     if rigthVal < smallest_Value:

@@ -26,10 +26,10 @@ def depthFirstValues(node):
         result.append(cur_Node.val)
         if cur_Node.right != None:
             stack.append(cur_Node.right)
-        if cur_Node.left == None:
+        if cur_Node.left != None:
             stack.append(cur_Node.left)
 
-    return result
+    return result 
 
 # left -> right -> node
 def depthFirstValue_Recur(node):
@@ -61,6 +61,39 @@ def breathFirstValue(node):
         
     return result
 
+# Binary tree Search
+# PreOrder : n l r  
+def DFS_PreOrder(node):
+    if node == None:
+        return
+    print(node.val)
+    DFS_PreOrder(node.left)
+    DFS_PreOrder(node.right)
+
+    return
+
+# InOrder : l n r
+def DFS_InOrder(node):
+    if node == None:
+        return
+
+    DFS_InOrder(node.left)
+    print(node.val)
+    DFS_InOrder(node.right)
+    
+    return
+
+# PostOrder : l r n
+def DFS_PostOrder(node):
+    if node == None:
+        return
+
+    DFS_PostOrder(node.left)
+    DFS_PostOrder(node.right)
+    print(node.val)
+    
+    return
+
 if __name__ == "__main__":
     # Initialise all the binary nodes
     a = Node('a')
@@ -87,3 +120,7 @@ if __name__ == "__main__":
     print(f"DFS Recursive : {depthFirstValue_Recur(a)}")
     print()
     print(f"BFS : {breathFirstValue(a)}")
+    print("Binary Search :")
+    print(f"PreOrder : {DFS_PreOrder(a)}")
+    print(f"InOrder : {DFS_InOrder(a)}")
+    print(f"PostOrder : {DFS_PostOrder(a)}")
