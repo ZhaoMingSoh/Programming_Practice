@@ -8,7 +8,7 @@ class TreeNode:
 
 # Bottom Up approach : (Recursive)
 def invertTree(root: TreeNode) -> TreeNode:
-    # Just return the Null node as they will be swapped anyway with error
+    # Just return the Null node as they will be swapped anyway without error
     if root == None:
         return root
     
