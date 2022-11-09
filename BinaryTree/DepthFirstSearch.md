@@ -5,8 +5,13 @@
     - in the case of 5_RangeSum_Of_BST : find the sum of the range of value between [low, high]
         - the base case for when node == Null : return 0 so that it does not affect the total sum.
 2. The algo will keep [moving to the left subtree] until the base case is hit before [moving to the right subtree] until the base case is hit then [move back to the root of the subtree.]
-    - Bottom up approach :
+    - Bottom up approach : (conditionals comes after recursive calls)
         - in the case of 3_TreeMinValue : (PostOrder)
             - find the smallest val from the left subtree and the right subtree then compare it to the current root of the subtree before return the minValue.
         - in the case of 5_RangeSum_Of_BST : (InOrder)
             - keep going left until you hit the base case which will return a sum of 0, check if the current subtree root's node.val is in [low, high], then node.val + LeftSum, keep going right which will also return a sum of 0, then add node.val + LeftSum + RightSum and return to the previous call.
+
+Note : Recursive DFS - 
+    1. what to do with the base case ? 
+    2. What order do you want to move through the nodes ? (**PreOrder**, InOrder, PostOrder) 
+    3. What approach to take ? Bottom Up or Top Down
