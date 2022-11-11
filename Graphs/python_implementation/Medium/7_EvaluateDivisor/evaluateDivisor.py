@@ -1,4 +1,5 @@
 from collections import defaultdict
+from collections import deque
 # DFS : Backtracking
 def calcEquation(equations: list[list[str]], values: list[float], queries: list[list[str]]) -> list[float]:
     # 1) Build the Graph from the equation -> an adjacency list
@@ -77,4 +78,5 @@ if __name__ == "__main__":
     print(f"The answers to {queries4} are {calcEquation(equations4, values4, queries4)}")
 
     d = {'a': {'b': 2.0}, 'b': {'a': 0.5, 'c': 3.0}, 'c': {'b': 0.3333333333333333}}
-    print(d['b'])
+    k = deque({'a':2})
+    print(k)
