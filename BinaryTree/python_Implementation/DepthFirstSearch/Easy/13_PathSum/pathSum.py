@@ -7,7 +7,6 @@ class TreeNode:
 
 def hasPathSum(root: TreeNode, targetSum: int) -> bool:
     def backtracking(node, s):
-        print(s)
         if node == None:
             return False
         s -= node.val

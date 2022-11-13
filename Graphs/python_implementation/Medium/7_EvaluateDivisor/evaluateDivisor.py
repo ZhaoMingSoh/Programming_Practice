@@ -78,5 +78,4 @@ if __name__ == "__main__":
     print(f"The answers to {queries4} are {calcEquation(equations4, values4, queries4)}")
 
     d = {'a': {'b': 2.0}, 'b': {'a': 0.5, 'c': 3.0}, 'c': {'b': 0.3333333333333333}}
-    k = deque({'a':2})
-    print(k)
+    k = deque(dict({'a':2}))
