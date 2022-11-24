@@ -14,11 +14,13 @@ int hammingWeight(uint32_t n) {
     return bits_freq;
 }
 
-// Method 2 : n = n & (n-1) -> each time we do this we are taking a bit off
+// Method 2 : n = n & (n-1) -> The and operation between n and n-1 will turn the least significant bit of 1 of n to become 0 essentially taking it off.
 int hammingWeight_2(uint32_t n){
     int bits_freq = 0;
     
+    // This process will keep going until the n becomes 0 where no least significant bit of 1 remains, thus we have found all the 1 bits.
     while(n != 0){
+        std::cout << n << std::endl;
         n = n & (n-1);
         bits_freq ++;
     }
@@ -27,8 +29,8 @@ int hammingWeight_2(uint32_t n){
 }
 
 int main(){
-    uint32_t n = 128;
-    std::cout << hammingWeight(n) << std::endl;
+    uint32_t n = 7;
+    // std::cout << hammingWeight(n) << std::endl;
     std::cout << hammingWeight_2(n) << std::endl;
     return 0 ;
 }

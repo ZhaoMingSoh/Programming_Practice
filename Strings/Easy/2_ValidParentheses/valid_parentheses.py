@@ -20,6 +20,7 @@ def isValid(s: str) -> bool:
             # If stack not empty, pop the top element to compare
             # else : replace it with '#'
             topEle = stack.popleft() if stack else '#'
+            # terminate if the current closing bracket does not have an immediate opening bracket in the correct order. (We're solving the sub expression to build up to the while expression)
             if topEle != mappings[p]:
                 return False
     

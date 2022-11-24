@@ -9,6 +9,8 @@ int getSum(int a, int b) {
     while(!carry_bool){
         xor_sum = a ^ b;
         carry =(unsigned int) (a & b) << 1;
+        std::cout << xor_sum << std::endl;
+        std::cout << carry << std::endl;
         if(carry == 0){
             carry_bool = true;
         }
